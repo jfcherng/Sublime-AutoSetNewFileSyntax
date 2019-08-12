@@ -1,0 +1,26 @@
+{
+    "version": "2",
+    "syntax_rules": [
+        // root rule
+        {
+            // only in the root rules, you can set the syntax
+            "set_syntax": "/PHP/PHP.",
+
+            "rules_match": "any", // "any" by default
+            "rules": [
+                // "contain", "!contain" ("!" means not), "first_line_match", "file_extension"
+                {"contain": "require __DIR__"},
+                {"contain": "<?php"},
+                // rules structure can be recursive
+                {
+                    "rules_match": "all",
+                    "rules":  [
+                        {"contain": "require"},
+                        {"contain": "<="},
+                    ],
+                },
+            ],
+        },
+        // another root rule...
+    ],
+}
